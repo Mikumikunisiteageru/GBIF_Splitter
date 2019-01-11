@@ -1,0 +1,57 @@
+\documentclass[a4paper, utf-8]{ctexart}
+\usepackage[margin=25mm, top=10mm, bottom=10mm]{geometry}
+\usepackage{mdwlist}
+\CTEXsetup[format={\Large\bfseries}]{section}
+
+\catcode`_=13
+\def_{\_}
+
+\title{\texttt{GBIF_Splitter_ver_Kaede} 使用说明}
+	\author{杨宇昌\footnote{Email: \texttt{yang.yc.allium@gmail.com}}}
+	\date{2019年1月11日}
+
+\begin{document}
+\maketitle
+
+\section{用途}
+
+将 GBIF 网站的 Occurence Data 按国家或地区划分成较小的文件，每条记录保留以下字段：
+\begin{itemize*}
+	\item \verb|gbifID|：GBIF 记录编号
+	\item \verb|family|：科名
+	\item \verb|genus|：属名
+	\item \verb|species|：种名
+	\item \verb|infraspecificEpithet|：种下阶元的加词
+	\item \verb|taxonRank|：分类阶元等级
+	\item \verb|scientificName|：学名
+	\item \verb|countryCode|：国家代码
+	\item \verb|locality|：地点
+	\item \verb|decimalLatitude|：纬度，北纬为正，南纬为负，用十进制表示，单位为角度
+	\item \verb|decimalLongitude|：经度，东经为正，西经为负，用十进制表示，单位为角度
+	\item \verb|elevation|：海拔高度，单位为米
+\end{itemize*}
+这些较小的文件以格式 \verb|GBIF_ver_Kaede_|\textit{countryCode}\verb|.txt| 命名，其中 \textit{countryCode} 表示记录中 \verb|countryCode| 字段的非空值，如中国大陆的对应值为 \verb|CN|；\verb|countryCode| 字段空白的记录如存在，则放在文件 \verb|GBIF_ver_Kaede_Unlabeled.txt| 中。程序同时还会生成名为 \verb|GBIF_ver_Kaede_Report.txt| 的文件，当中保存了前述每个小文件中的记录数。
+
+\section{环境要求}
+
+Windows 10 (64x) 系统下可直接运行。要在其他系统中运行，需自行编译\footnote{源代码见 \texttt{https://github.com/Mikumikunisiteageru/GBIF_Splitter/}}。
+
+
+\section{使用方法}
+
+\begin{enumerate*}
+	\item 在 GBIF 网站上选取需要的 Occurence Data，以 CSV 格式下载；
+	\item 打开下载的 ZIP 文件，将包含的 CSV 文件解压到任意目录下，重命名为 \verb|GBIF_Global.txt|；
+	\item 将 \verb|GBIF_Splitter_ver_Kaede.exe| 移动到同一目录中后运行。
+\end{enumerate*}
+
+\section{文件列表}
+
+\begin{itemize*}
+	\item \verb|GBIF_Splitter_ver_Kaede.exe|：程序文件
+	\item \verb|GBIF_Splitter_ver_Kaede_readme.pdf|：使用说明（即本文件）
+	\item \verb|GBIF_Global.txt|：样例输入，此处为 GBIF 网站上 \textit{Euptelea} 属的 Occurence Data
+\end{itemize*}
+
+\end{document}
+
