@@ -83,7 +83,7 @@ int main (void) {
 	fin.close ();
 	for (int i = 0; i < of_cnt; i ++)
 		fout[i].close();
-	cout << n << " RECORDS OK!" << endl;
+	cout << n - 1 << " RECORDS OK!" << endl;
 	ofstream fout_rep ("GBIF_ver_Kaede_Report.txt");
 	for (int i = 0; i < of_cnt; i ++)
 		fout_rep << hash[rev[i]] << tab << cnt_cnt[i] << endl;
